@@ -6,9 +6,7 @@ import com.qroom.controllers.answers.SuccessAnswer;
 import com.qroom.dao.DAO;
 import com.qroom.dao.entities.Login;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -59,7 +57,7 @@ public class AuthorisationController {
     @RequestMapping(value = "/testCon")
     public String testCon(HttpSession session) {
         System.out.println("TESTCON");
-        return "HIHIHhd";
+        return "HI!";
         /*session.setAttribute("test", "test");
         return login;*/
     }
