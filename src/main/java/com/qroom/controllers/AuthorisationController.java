@@ -5,10 +5,12 @@ import com.qroom.controllers.answers.ErrorAnswer;
 import com.qroom.controllers.answers.SuccessAnswer;
 import com.qroom.dao.DAO;
 import com.qroom.dao.entities.Login;
+import com.qroom.dao.entities.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 public class AuthorisationController {
@@ -58,6 +60,14 @@ public class AuthorisationController {
     public String testCon(HttpSession session) {
         System.out.println("TESTCON");
         return "HI!";
+        /*session.setAttribute("test", "test");
+        return login;*/
+    }
+
+    @RequestMapping(value = "/testDB")
+    public List<Person> testDB(HttpSession session) {
+        System.out.println("TESTDB");
+        return dao.test();
         /*session.setAttribute("test", "test");
         return login;*/
     }
