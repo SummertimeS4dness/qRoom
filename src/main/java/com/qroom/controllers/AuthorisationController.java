@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -31,7 +32,7 @@ public class AuthorisationController {
         }
     }
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/BLABLABLA")
     public Answer login(@RequestParam("login") String login, @RequestParam("password") String password, HttpSession session) {
         boolean check = dao.login(login, password);
         System.out.println("LOGIN: " + login);
@@ -71,4 +72,18 @@ public class AuthorisationController {
         /*session.setAttribute("test", "test");
         return login;*/
     }
+
+    @RequestMapping(value = "/google/login")
+    public String lul(HttpSession session) {
+        System.out.println("GOOGLE");
+        return "GOOOGLEEE!";
+        /*session.setAttribute("test", "test");
+        return login;*/
+    }
+
+    @RequestMapping("/user")
+    public Principal user(Principal principal) {
+        return principal;
+    }
+
 }
