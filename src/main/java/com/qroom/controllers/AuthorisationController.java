@@ -3,7 +3,7 @@ package com.qroom.controllers;
 import com.qroom.controllers.answers.Answer;
 import com.qroom.controllers.answers.ErrorAnswer;
 import com.qroom.controllers.answers.SuccessAnswer;
-import com.qroom.dao.DAO;
+import com.qroom.dao.DAOLogin;
 import com.qroom.dao.entities.Login;
 import com.qroom.dao.entities.Person;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +16,13 @@ import java.util.List;
 @RestController
 public class AuthorisationController {
     @Autowired
-    DAO dao;
+    DAOLogin daoLogin;
 
     @RequestMapping(value = "/register")
     public Answer register(@RequestParam("login") String login, @RequestParam("password") String password,
                            @RequestParam("name") String name, @RequestParam("surname") String surname,
                            @RequestParam("email") String email, @RequestParam("phone") String phone, HttpSession session) {
-        boolean check = dao.register(login, password, name, surname, email, phone);
+        boolean check = daoLogin.register(login, password, name, surname, email, phone);
         System.out.println("REGISTER: " + login);
         if(check) {
             session.setAttribute("user", new Login(login, password));
@@ -34,7 +34,7 @@ public class AuthorisationController {
 
     @RequestMapping(value = "/login")
     public Answer login(@RequestParam("login") String login, @RequestParam("password") String password, HttpSession session) {
-        boolean check = dao.login(login, password);
+        boolean check = daoLogin.login(login, password);
         System.out.println("LOGIN: " + login);
         if(check) {
             session.setAttribute("user", new Login(login, password));
@@ -48,7 +48,7 @@ public class AuthorisationController {
     public String test(HttpSession session) {
         Login login = (Login)session.getAttribute("user");
         System.out.println("TEST: " + login.getLogin());
-        if(dao.login(login.getLogin(), login.getPassword())) {
+        if(daoLogin.login(login.getLogin(), login.getPassword())) {
             return "True";
         } else {
             return "False";
@@ -68,7 +68,7 @@ public class AuthorisationController {
     @RequestMapping(value = "/testDB")
     public List<Person> testDB(HttpSession session) {
         System.out.println("TESTDB");
-        return dao.test();
+        return daoLogin.test();
         /*session.setAttribute("test", "test");
         return login;*/
     }

@@ -7,7 +7,7 @@ import com.qroom.dao.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
-public class DAOImpl implements DAO {
+public class DAOLoginImpl implements DAOLogin {
 
     @Autowired
     LoginRepository loginRepository;
