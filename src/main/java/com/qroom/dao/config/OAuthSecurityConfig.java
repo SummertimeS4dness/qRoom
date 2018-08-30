@@ -1,6 +1,6 @@
 package com.qroom.dao.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+/*import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;*/
 
 /**
  * Modifying or overriding the default spring boot security.
@@ -24,62 +24,62 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
  * @author Sarath Muraleedharan
  *
  */
-@Configurable
-@EnableWebSecurity
+/*@Configurable
+@EnableWebSecurity*/
 //@EnableOAuth2Sso
-public class OAuthSecurityConfig extends WebSecurityConfigurerAdapter {
+public class OAuthSecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
 
-    @Qualifier("oauth2ClientContext")
+    /*@Qualifier("oauth2ClientContext")
     @Autowired
     OAuth2ClientContext oauth2ClientContext;
 	@Autowired
     AuthorizationCodeResourceDetails authorizationCodeResourceDetails;
 	@Autowired
-    ResourceServerProperties resourceServerProperties;
+    ResourceServerProperties resourceServerProperties;*/
 
 	// This method is for overriding the default AuthenticationManagerBuilder.
 	// We can specify how the user details are kept in the application. It may
 	// be in a database, LDAP or in memory.
-	@Override
+	/*@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		super.configure(auth);
-	}
+	}*/
 
 	// This method is for overriding some configuration of the WebSecurity
 	// If you want to ignore some request or request patterns then you can
 	// specify that inside this method
-	@Override
+	/*@Override
 	public void configure(WebSecurity web) throws Exception {
 		super.configure(web);
-	}
+	}*/
 
 	/**
 	 * Method for creating filter for OAuth authentication
 	 * 
 	 * @return OAuth2ClientAuthenticationProcessingFilter
 	 */
-	private OAuth2ClientAuthenticationProcessingFilter filter() {
+	/*private OAuth2ClientAuthenticationProcessingFilter filter() {
 		// Creating the filter for "/google/login" url
 		OAuth2ClientAuthenticationProcessingFilter oAuth2Filter = new OAuth2ClientAuthenticationProcessingFilter(
-				"/google/login");
+				"/google/login");*/
 
 		// Creating the rest template for getting connected with OAuth service.
 		// The configuration parameters will inject while creating the bean.
-		OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(authorizationCodeResourceDetails,
+		/*OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(authorizationCodeResourceDetails,
 				oauth2ClientContext);
-		oAuth2Filter.setRestTemplate(oAuth2RestTemplate);
+		oAuth2Filter.setRestTemplate(oAuth2RestTemplate);*/
 
 		// setting the token service. It will help for getting the token and
 		// user details from the OAuth Service
-		oAuth2Filter.setTokenServices(new UserInfoTokenServices(resourceServerProperties.getUserInfoUri(),
+		/*oAuth2Filter.setTokenServices(new UserInfoTokenServices(resourceServerProperties.getUserInfoUri(),
 				resourceServerProperties.getClientId()));
 
 		return oAuth2Filter;
-	}
+	}*/
 
 	// This method is used for override HttpSecurity of the web Application.
 	// We can specify our authorization criteria inside this method.
-	@Override
+	/*@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http
@@ -101,5 +101,5 @@ public class OAuthSecurityConfig extends WebSecurityConfigurerAdapter {
 				.addFilterAt(filter(), BasicAuthenticationFilter.class)//
 				.csrf()//
 				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-	}
+	}*/
 }

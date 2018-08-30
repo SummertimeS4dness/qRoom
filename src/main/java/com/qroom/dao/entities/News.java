@@ -2,14 +2,14 @@ package com.qroom.dao.entities;
 
 public class News {
     private int id;
-    private String name;
+    private String value;
     private int course;
 
     public News() { }
 
-    public News(int id, String name, int course) {
+    public News(int id, String value, int course) {
         this.id = id;
-        this.name = name;
+        this.value = value;
         this.course = course;
     }
 
@@ -17,8 +17,8 @@ public class News {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public void setCourse(int course) {
@@ -29,8 +29,8 @@ public class News {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getValue() {
+        return value;
     }
 
     public int getCourse() {
