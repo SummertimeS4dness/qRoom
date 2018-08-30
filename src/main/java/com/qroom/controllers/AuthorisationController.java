@@ -32,7 +32,7 @@ public class AuthorisationController {
         }
     }
 
-    @RequestMapping(value = "/BLABLABLA")
+    @RequestMapping(value = "/login")
     public Answer login(@RequestParam("login") String login, @RequestParam("password") String password, HttpSession session) {
         boolean check = dao.login(login, password);
         System.out.println("LOGIN: " + login);
