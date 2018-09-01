@@ -7,11 +7,13 @@ import com.qroom.dao.DAOLogin;
 import com.qroom.dao.entities.Login;
 import com.qroom.dao.entities.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class AuthorisationController {
@@ -82,8 +84,9 @@ public class AuthorisationController {
     }
 
     @RequestMapping("/user")
-    public Principal user(Principal principal) {
-        return principal;
+    public Map<String, Object> user(Principal principal, OAuth2Authentication auth) {
+        //return principal;
+        return (Map<String, Object>) auth.getUserAuthentication().getDetails();
     }
 
 }

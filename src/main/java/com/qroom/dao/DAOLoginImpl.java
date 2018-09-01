@@ -17,12 +17,12 @@ public class DAOLoginImpl implements DAOLogin {
 
     @Override
     public boolean login(String login, String password) {
-        return password.equals(loginRepository.findOne(login).getLogin());
+        return password.equals(loginRepository.findById(login).get().getLogin());
     }
 
     @Override
     public boolean register(String login, String password, String name, String surname, String email, String phone) {
-        if(!loginRepository.exists(login)) {
+        if(!loginRepository.existsById(login)) {
             personRepository.save(new Person(login, name, surname, email, phone));
             loginRepository.save(new Login(login, password));
             return true;
