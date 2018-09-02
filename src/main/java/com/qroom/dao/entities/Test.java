@@ -1,25 +1,33 @@
 package com.qroom.dao.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Test {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Column
     private String time;
+    @Column
     private int available;
+    @Column
     private int quiz;
 
     public Test() { }
 
-    public Test(int id, String time, int available, int quiz) {
+    public Test(long id, String time, int available, int quiz) {
         this.id = id;
         this.time = time;
         this.available = available;
         this.quiz = quiz;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

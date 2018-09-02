@@ -1,15 +1,24 @@
 package com.qroom.dao.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Topic {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Column
     private String name;
+    @Column
     private String about;
+    @Column
     private int person;
+    @Column
     private int course;
 
     public Topic() { }
 
-    public Topic(int id, String name, String about, int person, int course) {
+    public Topic(long id, String name, String about, int person, int course) {
         this.id = id;
         this.name = name;
         this.about = about;
@@ -17,11 +26,11 @@ public class Topic {
         this.course = course;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

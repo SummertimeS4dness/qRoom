@@ -1,9 +1,17 @@
 package com.qroom.dao.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Comment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private String value;
+    @Column
     private int topic;
+    @Column
     private int parentComment;
 
     public Comment() { }

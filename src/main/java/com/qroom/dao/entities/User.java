@@ -3,11 +3,17 @@ package com.qroom.dao.entities;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Collection;
 import java.util.List;
 
-public class User implements UserDetails {
+@Entity
+public class User implements UserDetails{
+    @Id
     private Login login;
+    @Column
     private List<GrantedAuthority> grantedAuthorityList;
 
     public User(String login, String password, List<GrantedAuthority> grantedAuthorityList) {
