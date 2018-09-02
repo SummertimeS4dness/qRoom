@@ -1,8 +1,15 @@
 package com.qroom.dao.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private String name;
+    @Column
     private String about;
 
     public Course() { }

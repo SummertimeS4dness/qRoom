@@ -1,19 +1,26 @@
 package com.qroom.dao.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class News {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Column
     private String value;
+    @Column
     private int course;
 
     public News() { }
 
-    public News(int id, String value, int course) {
+    public News(long id, String value, int course) {
         this.id = id;
         this.value = value;
         this.course = course;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -25,7 +32,7 @@ public class News {
         this.course = course;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
