@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 public class AuthorizationTemplate implements Template {
 
-
     private ActionServer actionServer;
     private HttpSession session;
     private String command;
@@ -25,9 +24,8 @@ public class AuthorizationTemplate implements Template {
     public Answer answer() {
         Login login = (Login)session.getAttribute("user");
         if (login != null && daoLogin.login(login.getLogin(), login.getPassword())) {
-            return actionServer.action();
+            return actionServer.answer();
         } else {
-            session.removeAttribute("user");
             return new ErrorAnswer(command, "Authorization error");
         }
     }

@@ -77,6 +77,7 @@ public class AuthorisationController {
             session.setAttribute("user", new Login(login, password));
             return new SuccessAnswer<>("login", null, new Login(login, password));
         } else {
+            session.removeAttribute("user");
             return new ErrorAnswer("login", null);
         }
         /*Authentication authentication1 = SecurityContextHolder.getContext().getAuthentication();
