@@ -11,13 +11,24 @@ public class File {
     private String name;
     @Column
     private String path;
+    @Column
+    private String hash;
 
     public File() { }
 
-    public File(long id, String name, String path) {
+    public File(long id, String name, String path, String hash) {
         this.id = id;
         this.name = name;
         this.path = path;
+        this.hash = hash;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     public long getId() {
