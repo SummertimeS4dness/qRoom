@@ -3,6 +3,8 @@ package com.qroom.controllers;
 import com.qroom.controllers.answers.Answer;
 import com.qroom.controllers.answers.ErrorAnswer;
 import com.qroom.controllers.answers.SuccessAnswer;
+import com.qroom.controllers.answers.templates.ActionServer;
+import com.qroom.controllers.answers.templates.AuthorizationTemplate;
 import com.qroom.dao.DAOLogin;
 import com.qroom.dao.entities.Login;
 import com.qroom.dao.entities.Person;
@@ -62,7 +64,7 @@ public class AuthorisationController {
     }
 
     @RequestMapping(value = "/login1")
-    public /*Answer*/ String login(HttpServletRequest request, @RequestParam("login") String login, @RequestParam("password") String password, HttpSession session) {
+    public Answer login(HttpServletRequest request, @RequestParam("login") String login, @RequestParam("password") String password, HttpSession session) {
         boolean check = daoLogin.login(login, password);
         System.out.println("LOGIN: " + login);
 
@@ -71,28 +73,22 @@ public class AuthorisationController {
         Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        /*if(check) {
+        if(check) {
             session.setAttribute("user", new Login(login, password));
-            return new SuccessAnswer<Login>("login", null, new Login(login, password));
+            return new SuccessAnswer<>("login", null, new Login(login, password));
         } else {
             return new ErrorAnswer("login", null);
-        }*/
-        Authentication authentication1 = SecurityContextHolder.getContext().getAuthentication();
+        }
+        /*Authentication authentication1 = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication1.getName();
-        return currentPrincipalName;
+        return currentPrincipalName;*/
     }
 
     @RequestMapping(value = "/test")
-    public String test(HttpSession session) {
-        Login login = (Login)session.getAttribute("user");
-        System.out.println("TEST: " + login.getLogin());
-        if(daoLogin.login(login.getLogin(), login.getPassword())) {
-            return "True";
-        } else {
-            return "False";
-        }
-        /*session.setAttribute("test", "test");
-        return login;*/
+    public Answer test(HttpSession session) {
+        final String command = "test";
+        ActionServer actionServer = () -> new SuccessAnswer<>(command, "Authorization test success", true);
+        return new AuthorizationTemplate(actionServer, session, command).answer();
     }
 
     @RequestMapping(value = "/secret")
