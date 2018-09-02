@@ -88,8 +88,8 @@ public class AuthorisationController {
     @RequestMapping(value = "/test")
     public Answer test(HttpSession session) {
         final String command = "test";
-        ActionServer actionServer = () -> new SuccessAnswer<>(command, "Authorization test success", true);
-        return new AuthorizationTemplate(actionServer, session, command, daoLogin).answer();
+        return new AuthorizationTemplate(() -> new SuccessAnswer<>(command, "Authorization test success", true),
+                session, command, daoLogin).answer();
     }
 
     @RequestMapping(value = "/secret")
