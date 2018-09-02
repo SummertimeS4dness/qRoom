@@ -27,11 +27,12 @@ public class QroomApplication extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //.antMatchers("/", "/login**", "/webjars/**", "/testCon", "/uploadFile").permitAll()
         http
                 .csrf().disable()
-                    .antMatcher("/**")
+                    .antMatcher("/login")
                 .authorizeRequests()
-                    .antMatchers("/", "/login**", "/webjars/**", "/testCon").permitAll()
+                    .antMatchers("/**").permitAll()
                     .anyRequest().authenticated()
                 .and().logout().logoutSuccessUrl("/").permitAll(); //.logout().logoutSuccessUrl("/").permitAll();
                 /*.csrf().disable()
