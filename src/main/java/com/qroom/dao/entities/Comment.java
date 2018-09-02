@@ -1,25 +1,25 @@
 package com.qroom.dao.entities;
 
 public class Comment {
-    private int id;
+    private long id;
     private String value;
     private int topic;
     private int parentComment;
 
     public Comment() { }
 
-    public Comment(int id, String value, int topic, int parentComment) {
+    public Comment(long id, String value, int topic, int parentComment) {
         this.id = id;
         this.value = value;
         this.topic = topic;
         this.parentComment = parentComment;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -1,19 +1,19 @@
 package com.qroom.dao.entities;
 
 public class Course {
-    private int id;
+    private long id;
     private String name;
     private String about;
 
     public Course() { }
 
-    public Course(int id, String name, String about) {
+    public Course(long id, String name, String about) {
         this.id = id;
         this.name = name;
         this.about = about;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -25,7 +25,7 @@ public class Course {
         return about;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

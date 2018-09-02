@@ -1,25 +1,25 @@
 package com.qroom.dao.entities;
 
 public class Answer {
-    private int id;
+    private long id;
     private String value;
     private int person;
     private int mark;
 
     public Answer() { }
 
-    public Answer(int id, String value, int person, int mark) {
+    public Answer(long id, String value, int person, int mark) {
         this.id = id;
         this.value = value;
         this.person = person;
         this.mark = mark;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

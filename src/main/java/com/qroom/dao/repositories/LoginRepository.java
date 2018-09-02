@@ -5,5 +5,3 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface LoginRepository extends CrudRepository<Login, String> {
 }
-/*public interface PersonRepository extends CrudRepository<Person, Integer> {
-}*/

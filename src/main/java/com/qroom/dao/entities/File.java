@@ -1,23 +1,23 @@
 package com.qroom.dao.entities;
 
 public class File {
-    private int id;
+    private long id;
     private String name;
     private String path;
 
     public File() { }
 
-    public File(int id, String name, String path) {
+    public File(long id, String name, String path) {
         this.id = id;
         this.name = name;
         this.path = path;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
