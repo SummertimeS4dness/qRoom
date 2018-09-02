@@ -3,9 +3,8 @@ package com.qroom.dao;
 import com.qroom.dao.entities.News;
 import com.qroom.dao.entities.StudyObject;
 import com.qroom.dao.repositories.NewsRepository;
-import com.qroom.dao.repositories.StudyObjectRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DAOCourseImpl implements DAOCourse {
@@ -22,8 +21,12 @@ public class DAOCourseImpl implements DAOCourse {
     }
 
     @Override
-    public List<News> getNewsForCourse(int id) {
-        return newsRepository.getNewsForCourse(id);
-        //return null;
+    public List<Long> getNewsForCourse(long id) {
+        List<Long> list = new ArrayList<>();
+        List<News> news = newsRepository.getNewsForCourse(id);
+        for (News n : news) {
+            list.add((long)n.getId());
+        }
+        return list;
     }
 }

@@ -25,13 +25,13 @@ public class DAOConfiguration {
     @Bean
     public DAOCourseView daoCourseView() {
         return new DAOCourseView() {
-            @Autowired
+            //@Autowired
             NewsRepository newsRepository;
 
-            @Autowired
+            //@Autowired
             CourseRepository courseRepository;
 
-            @Autowired
+            //@Autowired
             StudyObjectRepository studyObjectRepository;
 
             @Override

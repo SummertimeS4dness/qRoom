@@ -33,9 +33,7 @@ public class QroomApplication extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                     .antMatchers("/", "/login**", "/webjars/**", "/testCon").permitAll()
                     .anyRequest().authenticated()
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/testDB").deleteCookies("JSESSIONID")
-                .invalidateHttpSession(true); //.logout().logoutSuccessUrl("/").permitAll();
+                .and().logout().logoutSuccessUrl("/").permitAll(); //.logout().logoutSuccessUrl("/").permitAll();
                 /*.csrf().disable()
                 .antMatcher("/**")
                 .authorizeRequests()
@@ -43,7 +41,10 @@ public class QroomApplication extends WebSecurityConfigurerAdapter{
                 .permitAll()
                 .anyRequest()
                 .authenticated()
-                .and().logout().logoutSuccessUrl("/").permitAll();*/
+                .and().logout().logoutSuccessUrl("/").permitAll();
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/testDB").deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true);*/
     }
 
     @Override
