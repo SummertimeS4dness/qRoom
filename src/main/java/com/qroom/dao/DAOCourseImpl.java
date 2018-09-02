@@ -25,7 +25,7 @@ public class DAOCourseImpl implements DAOCourse {
         List<Long> list = new ArrayList<>();
         List<News> news = newsRepository.getNewsForCourse(id);
         for (News n : news) {
-            list.add((long)n.getId());
+            list.add(n.getId());
         }
         return list;
     }
