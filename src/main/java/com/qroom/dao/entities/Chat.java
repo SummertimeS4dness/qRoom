@@ -1,22 +1,28 @@
 package com.qroom.dao.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Chat {
-    private int persone;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long person;
+    @Column
     private int course;
 
     public Chat() { }
 
-    public Chat(int persone, int course) {
-        this.persone = persone;
+    public Chat(long person, int course) {
+        this.person = person;
         this.course = course;
     }
 
-    public int getPersone() {
-        return persone;
+    public long getPerson() {
+        return person;
     }
 
-    public void setPersone(int persone) {
-        this.persone = persone;
+    public void setPerson(long person) {
+        this.person = person;
     }
 
     public int getCourse() {

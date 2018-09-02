@@ -1,31 +1,42 @@
 package com.qroom.dao.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Message {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Column
     private String text;
+    @Column
     private int file;
+    @Column
     private int integer;
+    @Column
     private int course;
+    @Column
     private int teacher;
-    private int pesron;
+    @Column
+    private int person;
 
     public Message() { }
 
-    public Message(int id, String text, int file, int integer, int course, int teacher, int pesron) {
+    public Message(long id, String text, int file, int integer, int course, int teacher, int person) {
         this.id = id;
         this.text = text;
         this.file = file;
         this.integer = integer;
         this.course = course;
         this.teacher = teacher;
-        this.pesron = pesron;
+        this.person = person;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -69,11 +80,9 @@ public class Message {
         this.teacher = teacher;
     }
 
-    public int getPesron() {
-        return pesron;
+    public int getPerson() {
+        return person;
     }
 
-    public void setPesron(int pesron) {
-        this.pesron = pesron;
-    }
+    public void setPerson(int person) { this.person = person; }
 }
