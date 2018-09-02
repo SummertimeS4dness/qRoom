@@ -1,6 +1,7 @@
 package com.qroom.dao.configuration;
 
 import com.qroom.dao.DAOCourseView;
+import com.qroom.dao.DAOCourseViewImpl;
 import com.qroom.dao.DAOLogin;
 import com.qroom.dao.DAOLoginImpl;
 import com.qroom.dao.entities.Course;
@@ -24,35 +25,6 @@ public class DAOConfiguration {
 
     @Bean
     public DAOCourseView daoCourseView() {
-        return new DAOCourseView() {
-            //@Autowired
-            NewsRepository newsRepository;
-
-            //@Autowired
-            CourseRepository courseRepository;
-
-            //@Autowired
-            StudyObjectRepository studyObjectRepository;
-
-            @Override
-            public Course getCourse(String code) {
-                return courseRepository.getCourseInfo(code);
-            }
-
-            @Override
-            public List<News> getNewsByCourse(long id) {
-                return newsRepository.getNewsForCourse(id);
-            }
-
-            @Override
-            public List<StudyObject> getContentsByCourse(long id) {
-                return studyObjectRepository.getContentsByCourse(id);
-            }
-
-            @Override
-            public StudyObject getContent(long id) {
-                return studyObjectRepository.getContent(id).get(0);
-            }
-        };
+        return new DAOCourseViewImpl();
     }
 }

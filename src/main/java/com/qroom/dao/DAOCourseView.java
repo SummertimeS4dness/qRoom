@@ -11,4 +11,5 @@ public interface DAOCourseView {
     List<News> getNewsByCourse(long id);
     List<StudyObject> getContentsByCourse(long id);
     StudyObject getContent(long id);
+    News getNewsById(long id);
 }
