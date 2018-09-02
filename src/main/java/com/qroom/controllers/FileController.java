@@ -16,24 +16,13 @@ public class FileController {
     public Answer uploadFile(@RequestParam("file") MultipartFile file) {
         final String command = "uploadFile";
         ActionServer actionServer = () -> {
-
-        };
-        if (!file.isEmpty()) {
-            try {
-
-
-
-                // Create the file on server
-
-
-
-                return "You successfully uploaded file=" + name;
-            } catch (Exception e) {
-                return "You failed to upload " + name + " => " + e.getMessage();
+            if (file.isEmpty()) {
+                return new ErrorAnswer(command, "You failed to upload file because the file was empty.");
+            } else {
+                return null;
             }
-        } else {
-            return "You failed to upload " + name
-                    + " because the file was empty.";
-        }
+        };
+        return null;
+
     }
 }
