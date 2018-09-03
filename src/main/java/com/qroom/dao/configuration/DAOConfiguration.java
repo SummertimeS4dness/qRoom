@@ -3,6 +3,7 @@ package com.qroom.dao.configuration;
 import com.qroom.controllers.answers.ErrorAnswer;
 import com.qroom.dao.*;
 import com.qroom.dao.entities.File;
+import com.qroom.dao.entities.Message;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 @Configuration
 public class DAOConfiguration {
@@ -55,6 +57,26 @@ public class DAOConfiguration {
             @Override
             public boolean delete(String hash) {
                 return false;
+            }
+        };
+    }
+
+    @Bean
+    public DAOMessage daoMessage() {
+        return new DAOMessage() {
+            @Override
+            public List<Long> getMessages(long person, long course) {
+                return null;
+            }
+
+            @Override
+            public boolean sendMessage(Message message) {
+                return false;
+            }
+
+            @Override
+            public Message getMessage(long id) {
+                return null;
             }
         };
     }

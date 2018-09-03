@@ -10,27 +10,24 @@ public class Message {
     @Column
     private String text;
     @Column
-    private int file;
+    private String file;
     @Column
-    private int integer;
+    private long number;
     @Column
-    private int course;
+    private long course;
     @Column
-    private int teacher;
-    @Column
-    private int person;
+    private long person;
 
     public Message() { }
 
-    public Message(long id, String text, int file, int integer, int course, int teacher, int person) {
-        this.id = id;
-        this.text = text;
-        this.file = file;
-        this.integer = integer;
-        this.course = course;
-        this.teacher = teacher;
-        this.person = person;
+    public Message(String text, String file, long number, long course, long person) {
+        this.setText(text);
+        this.setFile(file);
+        this.setNumber(number);
+        this.setCourse(course);
+        this.setPerson(person);
     }
+
 
     public long getId() {
         return id;
@@ -48,41 +45,35 @@ public class Message {
         this.text = text;
     }
 
-    public int getFile() {
+    public String getFile() {
         return file;
     }
 
-    public void setFile(int file) {
+    public void setFile(String file) {
         this.file = file;
     }
 
-    public int getInteger() {
-        return integer;
+    public long getNumber() {
+        return number;
     }
 
-    public void setInteger(int integer) {
-        this.integer = integer;
+    public void setNumber(long number) {
+        this.number = number;
     }
 
-    public int getCourse() {
+    public long getCourse() {
         return course;
     }
 
-    public void setCourse(int course) {
+    public void setCourse(long course) {
         this.course = course;
     }
 
-    public int getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(int teacher) {
-        this.teacher = teacher;
-    }
-
-    public int getPerson() {
+    public long getPerson() {
         return person;
     }
 
-    public void setPerson(int person) { this.person = person; }
+    public void setPerson(long person) {
+        this.person = person;
+    }
 }
