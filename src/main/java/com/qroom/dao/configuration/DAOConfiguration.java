@@ -1,8 +1,10 @@
 package com.qroom.dao.configuration;
 
-import com.qroom.controllers.answers.ErrorAnswer;
+import antlr.debug.MessageAdapter;
 import com.qroom.dao.*;
-import com.qroom.dao.entities.File;
+import com.qroom.dao.entities.*;
+import com.qroom.dao.repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,26 +12,104 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 public class DAOConfiguration {
     @Bean
     public DAOLogin daoLogin() {
-        return new DAOLoginImpl();
+        return new DAOLogin() {
+            @Autowired
+            LoginRepository loginRepository;
+
+            @Autowired
+            PersonRepository personRepository;
+
+            @Override
+            public boolean login(String login, String password) {
+                return loginRepository.findById(login).orElse(null) != null &&
+                        password.equals(loginRepository.findById(login).get().getPassword());
+            }
+
+            @Override
+            public boolean register(String login, String password, String name, String surname, String email, String phone) {
+                if(!loginRepository.existsById(login)) {
+                    personRepository.save(new Person(login, name, surname, email, phone));
+                    loginRepository.save(new Login(login, password));
+                    return true;
+                }
+                return false;
+            }
+
+            @Override
+            public List<Person> test() {
+                return  (List<Person>) personRepository.findAll();
+                //return (List<Login>) loginRepository.findAll();
+                //return null;
+            }
+        };
     }
 
     @Bean
     public DAOCourseView daoCourseView() {
-        return new DAOCourseViewImpl();
+        return new DAOCourseView(){
+            //@Autowired
+            NewsRepository newsRepository;
+
+            //@Autowired
+            CourseRepository courseRepository;
+
+            //@Autowired
+            StudyObjectRepository studyObjectRepository;
+
+            @Override
+            public Course getCourse(String code) {
+                return courseRepository.getCourseInfo(code);
+            }
+
+            @Override
+            public List<News> getNewsByCourse(long courseId) {
+                return newsRepository.getNewsForCourse(courseId);
+            }
+
+            @Override
+            public List<StudyObject> getContentsByCourse(long courseId) {
+                return studyObjectRepository.getContentsByCourse(courseId);
+            }
+
+            @Override
+            public StudyObject getContent(long id) {
+                //return studyObjectRepository.findById(id).get();
+                return null;
+                /*List<StudyObject> list = studyObjectRepository.getContent(id);
+                if(list.isEmpty()) {
+                    return null;
+                }
+                return list.get(0);*/
+            }
+
+            @Override
+            public News getNewsById(long id) {
+                //return newsRepository.findById(id).get();
+                return null;
+            }
+        };
     }
 
     @Bean
     public DAOFile daoFile() {
         return new DAOFile() {
-            @Override
-            public File getFile(String hash) throws IOException {
+            //@Autowired
+            FileRepository fileRepository;
 
-                return null;
+            @Override
+            public File getFile(String hash) {
+                List<File> list = fileRepository.getFileByHash(hash);
+                if (list.isEmpty()) {
+                    return null;
+                }
+                return list.get(0);
             }
 
             @Override
@@ -54,7 +134,104 @@ public class DAOConfiguration {
 
             @Override
             public boolean delete(String hash) {
+                java.io.File file = new java.io.File("D:/" + hash);
+                return file.delete();
+            }
+        };
+    }
+
+    @Bean
+    public DAOMessage daoMessage() {
+        return new DAOMessage() {
+            //@Autowired
+            MessageRepository messageRepository;
+
+            @Override
+            public List<Long> getMessages(long person, long course) {
+                List<Long> list = new ArrayList<>();
+                List<Message> messages = messageRepository.getMessages(person, course);
+                for (Message m : messages) {
+                    list.add(m.getId());
+                }
+                return list;
+            }
+
+            @Override
+            public boolean sendMessage(Message message) {
+                //messageRepository.save(message);
                 return false;
+            }
+
+            @Override
+            public Message getMessageById(long id) {
+                //return messageRepository.findById(id).get();
+                return null;
+            }
+
+            @Override
+            public long getSender(long senderId) {
+                return messageRepository.getSender(senderId);
+            }
+        };
+    }
+
+    @Bean
+    DAOCourse daoCourse() {
+        return new DAOCourse() {
+            //@Autowired
+            StudyObjectRepository studyObjectRepository;
+
+            //@Autowired
+            NewsRepository newsRepository;
+
+            //@Autowired
+            CourseRepository courseRepository;
+
+            @Override
+            public List<StudyObject> getAllStudyObject() {
+                //return studyObjectRepository.findAll();
+                return null;
+            }
+
+            @Override
+            public List<Long> getNewsForCourse(long courseId) {
+                List<Long> list = new ArrayList<>();
+                List<News> news = newsRepository.getNewsForCourse(courseId);
+                for (News n : news) {
+                    list.add(n.getId());
+                }
+                return list;
+            }
+
+            @Override
+            public Course getCourseByMessage(long messageId) {
+                return courseRepository.getCourseByMessage(messageId);
+            }
+        };
+    }
+
+    @Bean
+    DAOPerson daoPerson() {
+        return new DAOPerson() {
+            @Autowired
+            PersonRepository personRepository;
+
+            @Override
+            public Person getPersonByLogin(String login) {
+                return personRepository.getPersonByLogin(login);
+            }
+        };
+    }
+
+    @Bean
+    DAOTeacher daoTeacher() {
+        return new DAOTeacher() {
+            @Autowired
+            TeacherRepository teacherRepository;
+
+            @Override
+            public long getTeacherByCourse(long courseId) {
+                return teacherRepository.getTeacherByCourse(courseId);
             }
         };
     }

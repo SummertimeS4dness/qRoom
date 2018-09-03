@@ -10,7 +10,6 @@ public interface StudyObjectRepository /*extends CrudRepository<StudyObject, Lon
     @Query(value = "SELECT * FROM study_object WHERE study_object.course=?1", nativeQuery = true)
     List<StudyObject> getContentsByCourse(long id);
 
-    @Query(value = "SELECT * FROM study_object WHERE study_object.id=?1", nativeQuery = true)
-    List<StudyObject> getContent(long id);
-
+    /*@Query(value = "SELECT * FROM study_object WHERE study_object.id=?1", nativeQuery = true)
+    List<StudyObject> getContent(long id);*/
 }

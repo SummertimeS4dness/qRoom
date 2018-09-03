@@ -7,5 +7,6 @@ import java.util.List;
 public interface DAOMessage {
     List<Long> getMessages(long person, long course);
     boolean sendMessage(Message message);
-    Message getMessage(long id);
+    Message getMessageById(long id);
+    long getSender(long senderId);
 }
