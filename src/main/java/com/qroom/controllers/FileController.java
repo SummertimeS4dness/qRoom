@@ -41,5 +41,4 @@ public class FileController {
         return new AuthorizationTemplate(actionServer, session, command, daoLogin).answer();
     }
 
-
 }
