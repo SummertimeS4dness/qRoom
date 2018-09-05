@@ -32,7 +32,7 @@ public class News {
         this.course = course;
     }
 
-    public long getId() {
+    public long  getId() {
         return id;
     }
 
