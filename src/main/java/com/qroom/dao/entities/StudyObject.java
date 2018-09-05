@@ -6,52 +6,41 @@ import javax.persistence.*;
 public class StudyObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long study_object_id;
     @Column
-    private int course;
+    private long number;
     @Column
-    private int teacher;
-    @Column
-    private int number;
+    private long course_id;
 
     public StudyObject() {
     }
 
-    public StudyObject(int course, int teacher, int number) {
-        this.course = course;
-        this.teacher = teacher;
+    public StudyObject(long number, long course_id) {
         this.number = number;
+        this.course_id = course_id;
     }
 
-    public long getId() {
-        return id;
+    public long getStudy_object_id() {
+        return study_object_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setStudy_object_id(long study_object_id) {
+        this.study_object_id = study_object_id;
     }
 
-    public int getCourse() {
-        return course;
-    }
-
-    public void setCourse(int course) {
-        this.course = course;
-    }
-
-    public int getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(int teacher) {
-        this.teacher = teacher;
-    }
-
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(long number) {
         this.number = number;
+    }
+
+    public long getCourse_id() {
+        return course_id;
+    }
+
+    public void setCourse_id(long course_id) {
+        this.course_id = course_id;
     }
 }

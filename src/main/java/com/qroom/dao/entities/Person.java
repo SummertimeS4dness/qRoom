@@ -6,77 +6,84 @@ import javax.persistence.*;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column
-    private String login;
+    private long person_id;
     @Column
     private String name;
     @Column
     private String surname;
     @Column
-    private String email;
+    private String icon;
+    @Column
+    private long icon_id;
     @Column
     private String phone;
+    @Column
+    private long login_id;
 
     public Person() { }
 
-    public Person(String login, String name, String surname, String email, String phone) {
-        this.login = login;
+    public Person(String name, String surname, String icon, long icon_id, String phone, long login_id) {
         this.name = name;
         this.surname = surname;
-        this.email = email;
+        this.icon = icon;
+        this.icon_id = icon_id;
         this.phone = phone;
+        this.login_id = login_id;
     }
 
-    public Person(String login) {
-        this.login = login;
+    public long getPerson_id() {
+        return person_id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPerson_id(long person_id) {
+        this.person_id = person_id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getSurname() {
         return surname;
     }
 
-    public String getEmail() {
-        return email;
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public long getIcon_id() {
+        return icon_id;
+    }
+
+    public void setIcon_id(long icon_id) {
+        this.icon_id = icon_id;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public long getId() {
-        return id;
+    public long getLogin_id() {
+        return login_id;
+    }
+
+    public void setLogin_id(long login_id) {
+        this.login_id = login_id;
     }
 }

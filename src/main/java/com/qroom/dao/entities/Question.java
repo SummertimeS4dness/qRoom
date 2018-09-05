@@ -6,51 +6,47 @@ import javax.persistence.*;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long question_id;
     @Column
-    private int test;
+    private String name;
     @Column
-    private String question;
+    private long test_id;
     @Column
     private String about;
     @Column
-    private int type;
-    @Column
-    private int conformity;
+    private String type;
 
     public Question() { }
 
-    public Question(long id, int test, String question, String about, int type, int conformity) {
-        this.id = id;
-        this.test = test;
-        this.question = question;
+    public Question(String name, long test_id, String about, String type) {
+        this.name = name;
+        this.test_id = test_id;
         this.about = about;
         this.type = type;
-        this.conformity = conformity;
     }
 
-    public long getId() {
-        return id;
+    public long getQuestion_id() {
+        return question_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setQuestion_id(long question_id) {
+        this.question_id = question_id;
     }
 
-    public int getTest() {
-        return test;
+    public String getName() {
+        return name;
     }
 
-    public void setTest(int test) {
-        this.test = test;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getQuestion() {
-        return question;
+    public long getTest_id() {
+        return test_id;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setTest_id(long test_id) {
+        this.test_id = test_id;
     }
 
     public String getAbout() {
@@ -61,19 +57,11 @@ public class Question {
         this.about = about;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
-    }
-
-    public int getConformity() {
-        return conformity;
-    }
-
-    public void setConformity(int conformity) {
-        this.conformity = conformity;
     }
 }

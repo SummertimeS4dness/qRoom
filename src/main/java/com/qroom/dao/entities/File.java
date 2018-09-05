@@ -6,37 +6,28 @@ import javax.persistence.*;
 public class File {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long file_id;
     @Column
     private String name;
     @Column
     private String path;
     @Column
-    private String hash;
+    private long person_id;
 
     public File() { }
 
-    public File(long id, String name, String path, String hash) {
-        this.id = id;
+    public File(String name, String path, long person_id) {
         this.name = name;
         this.path = path;
-        this.hash = hash;
+        this.person_id = person_id;
     }
 
-    public String getHash() {
-        return hash;
+    public long getFile_id() {
+        return file_id;
     }
 
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public void setFile_id(long file_id) {
+        this.file_id = file_id;
     }
 
     public String getName() {
@@ -53,5 +44,13 @@ public class File {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public long getPerson_id() {
+        return person_id;
+    }
+
+    public void setPerson_id(long person_id) {
+        this.person_id = person_id;
     }
 }

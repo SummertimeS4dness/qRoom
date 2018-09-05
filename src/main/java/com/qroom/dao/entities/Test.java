@@ -6,52 +6,40 @@ import javax.persistence.*;
 public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long test_id;
     @Column
-    private String time;
+    private String name;
     @Column
-    private int available;
-    @Column
-    private int quiz;
+    private long study_object_id;
 
     public Test() { }
 
-    public Test(long id, String time, int available, int quiz) {
-        this.id = id;
-        this.time = time;
-        this.available = available;
-        this.quiz = quiz;
+    public Test(String name, long study_object_id) {
+        this.name = name;
+        this.study_object_id = study_object_id;
     }
 
-    public long getId() {
-        return id;
+    public long getTest_id() {
+        return test_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setTest_id(long test_id) {
+        this.test_id = test_id;
     }
 
-    public String getTime() {
-        return time;
+    public String getName() {
+        return name;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getAvailable() {
-        return available;
+    public long getStudy_object_id() {
+        return study_object_id;
     }
 
-    public void setAvailable(int available) {
-        this.available = available;
-    }
-
-    public int getQuiz() {
-        return quiz;
-    }
-
-    public void setQuiz(int quiz) {
-        this.quiz = quiz;
+    public void setStudy_object_id(long study_object_id) {
+        this.study_object_id = study_object_id;
     }
 }

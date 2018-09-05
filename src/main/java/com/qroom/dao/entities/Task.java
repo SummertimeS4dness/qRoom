@@ -6,30 +6,51 @@ import javax.persistence.*;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long task_id;
     @Column
-    private String value;
+    private String name;
+    @Column
+    private String content;
+    @Column
+    private long study_object_id;
 
     public Task() { }
 
-    public Task(long id, String value) {
-        this.id = id;
-        this.value = value;
+    public Task(String name, String content, long study_object_id) {
+        this.name = name;
+        this.content = content;
+        this.study_object_id = study_object_id;
     }
 
-    public long getId() {
-        return id;
+    public long getTask_id() {
+        return task_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setTask_id(long task_id) {
+        this.task_id = task_id;
     }
 
-    public String getValue() {
-        return value;
+    public String getName() {
+        return name;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public long getStudy_object_id() {
+        return study_object_id;
+    }
+
+    public void setStudy_object_id(long study_object_id) {
+        this.study_object_id = study_object_id;
     }
 }

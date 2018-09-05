@@ -6,35 +6,39 @@ import javax.persistence.*;
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long message_id;
+    @Column
+    private long chat_id;
     @Column
     private String text;
     @Column
-    private String file;
+    private long sender_id;
     @Column
-    private long number;
-    @Column
-    private long course;
-    @Column
-    private long person;
+    private long file_id;
 
     public Message() { }
 
-    public Message(String text, String file, long number, long course, long person) {
-        this.setText(text);
-        this.setFile(file);
-        this.setNumber(number);
-        this.setCourse(course);
-        this.setPerson(person);
+    public Message(long chat_id, String text, long sender_id, long file_id) {
+        this.chat_id = chat_id;
+        this.text = text;
+        this.sender_id = sender_id;
+        this.file_id = file_id;
     }
 
-
-    public long getId() {
-        return id;
+    public long getMessage_id() {
+        return message_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setMessage_id(long message_id) {
+        this.message_id = message_id;
+    }
+
+    public long getChat_id() {
+        return chat_id;
+    }
+
+    public void setChat_id(long chat_id) {
+        this.chat_id = chat_id;
     }
 
     public String getText() {
@@ -45,35 +49,19 @@ public class Message {
         this.text = text;
     }
 
-    public String getFile() {
-        return file;
+    public long getSender_id() {
+        return sender_id;
     }
 
-    public void setFile(String file) {
-        this.file = file;
+    public void setSender_id(long sender_id) {
+        this.sender_id = sender_id;
     }
 
-    public long getNumber() {
-        return number;
+    public long getFile_id() {
+        return file_id;
     }
 
-    public void setNumber(long number) {
-        this.number = number;
-    }
-
-    public long getCourse() {
-        return course;
-    }
-
-    public void setCourse(long course) {
-        this.course = course;
-    }
-
-    public long getPerson() {
-        return person;
-    }
-
-    public void setPerson(long person) {
-        this.person = person;
+    public void setFile_id(long file_id) {
+        this.file_id = file_id;
     }
 }

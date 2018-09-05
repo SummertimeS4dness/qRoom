@@ -6,26 +6,34 @@ import javax.persistence.*;
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long teacher_id;
+    @Column
+    private long person_id;
     @Column
     private String about;
-    @Column
-    private int payment;
 
-    public Teacher() { }
+    public Teacher() {
+    }
 
-    public Teacher(long id, String about, int payment) {
-        this.id = id;
+    public Teacher(long person_id, String about) {
+        this.person_id = person_id;
         this.about = about;
-        this.payment = payment;
     }
 
-    public long getId() {
-        return id;
+    public long getTeacher_id() {
+        return teacher_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setTeacher_id(long teacher_id) {
+        this.teacher_id = teacher_id;
+    }
+
+    public long getPerson_id() {
+        return person_id;
+    }
+
+    public void setPerson_id(long person_id) {
+        this.person_id = person_id;
     }
 
     public String getAbout() {
@@ -34,13 +42,5 @@ public class Teacher {
 
     public void setAbout(String about) {
         this.about = about;
-    }
-
-    public int getPayment() {
-        return payment;
-    }
-
-    public void setPayment(int payment) {
-        this.payment = payment;
     }
 }

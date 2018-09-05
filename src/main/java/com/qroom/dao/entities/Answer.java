@@ -6,52 +6,84 @@ import javax.persistence.*;
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long answer_id;
     @Column
-    private String value;
+    private long option_id;
     @Column
-    private int person;
+    private long status;
     @Column
-    private int mark;
+    private double mark;
+    @Column
+    private long course_id;
+    @Column
+    private long question_id;
+    @Column
+    private long person_id;
 
     public Answer() { }
 
-    public Answer(long id, String value, int person, int mark) {
-        this.id = id;
-        this.value = value;
-        this.person = person;
+    public Answer(long option_id, long status, double mark, long course_id, long question_id, long person_id) {
+        this.option_id = option_id;
+        this.status = status;
         this.mark = mark;
+        this.course_id = course_id;
+        this.question_id = question_id;
+        this.person_id = person_id;
     }
 
-    public long getId() {
-        return id;
+    public long getAnswer_id() {
+        return answer_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setAnswer_id(long answer_id) {
+        this.answer_id = answer_id;
     }
 
-    public String getValue() {
-        return value;
+    public long getOption_id() {
+        return option_id;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setOption_id(long option_id) {
+        this.option_id = option_id;
     }
 
-    public int getPerson() {
-        return person;
+    public long getStatus() {
+        return status;
     }
 
-    public void setPerson(int person) {
-        this.person = person;
+    public void setStatus(long status) {
+        this.status = status;
     }
 
-    public int getMark() {
+    public double getMark() {
         return mark;
     }
 
-    public void setMark(int mark) {
+    public void setMark(double mark) {
         this.mark = mark;
+    }
+
+    public long getCourse_id() {
+        return course_id;
+    }
+
+    public void setCourse_id(long course_id) {
+        this.course_id = course_id;
+    }
+
+    public long getQuestion_id() {
+        return question_id;
+    }
+
+    public void setQuestion_id(long question_id) {
+        this.question_id = question_id;
+    }
+
+    public long getPerson_id() {
+        return person_id;
+    }
+
+    public void setPerson_id(long person_id) {
+        this.person_id = person_id;
     }
 }

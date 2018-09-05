@@ -6,30 +6,29 @@ import javax.persistence.*;
 public class Chat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long person;
+    private long chat_id;
     @Column
-    private int course;
+    private String name;
 
     public Chat() { }
 
-    public Chat(long person, int course) {
-        this.person = person;
-        this.course = course;
+    public Chat(String name) {
+        this.name = name;
     }
 
-    public long getPerson() {
-        return person;
+    public long getChat_id() {
+        return chat_id;
     }
 
-    public void setPerson(long person) {
-        this.person = person;
+    public void setChat_id(long chat_id) {
+        this.chat_id = chat_id;
     }
 
-    public int getCourse() {
-        return course;
+    public String getName() {
+        return name;
     }
 
-    public void setCourse(int course) {
-        this.course = course;
+    public void setName(String name) {
+        this.name = name;
     }
 }
