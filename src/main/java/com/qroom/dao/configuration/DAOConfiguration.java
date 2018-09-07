@@ -35,8 +35,9 @@ public class DAOConfiguration {
             @Override
             public boolean register(String login, String password, String name, String surname, String email, String phone) {
                 if(!loginRepository.existsById(login)) {
-                    personRepository.save(new Person(login, name, surname, email, phone));
                     loginRepository.save(new Login(login, password));
+                    long res = loginRepository.getIdByEmail(login);
+                    personRepository.save(new Person(null, null, null, null, res));
                     return true;
                 }
                 return false;
@@ -151,7 +152,7 @@ public class DAOConfiguration {
                 List<Long> list = new ArrayList<>();
                 List<Message> messages = messageRepository.getMessages(person, course);
                 for (Message m : messages) {
-                    list.add(m.getId());
+                    list.add(m.getMessage_id());
                 }
                 return list;
             }
