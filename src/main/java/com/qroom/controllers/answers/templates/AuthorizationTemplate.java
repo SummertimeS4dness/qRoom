@@ -23,7 +23,7 @@ public class AuthorizationTemplate implements Template {
     @Override
     public Answer answer() {
         Login login = (Login)session.getAttribute("user");
-        if (login != null && daoLogin.login(login.getLogin(), login.getPassword())) {
+        if (login != null && daoLogin.login(login.getEmail(), login.getPassword())) {
             return actionServer.answer();
         } else {
             return new ErrorAnswer(command, "Authorization error");

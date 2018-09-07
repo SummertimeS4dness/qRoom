@@ -8,4 +8,5 @@ public interface DAOPerson {
     boolean setSurname(long id, String surname);
     boolean setIcon(long id, long icon);
     boolean setPhone(long id, String phone);
+    String getIcon(long id);
 }

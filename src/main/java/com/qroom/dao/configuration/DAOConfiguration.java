@@ -37,7 +37,19 @@ public class DAOConfiguration {
                 if(!loginRepository.existsById(login)) {
                     loginRepository.save(new Login(login, password));
                     long res = loginRepository.getIdByEmail(login);
-                    personRepository.save(new Person(null, null, null, null, res));
+                    personRepository.save(new Person(null, null, 0, null, res));
+                    return true;
+                }
+                return false;
+            }
+
+            @Override
+            public boolean register(String login, String password/*, String name, String surname, String email, String phone*/) {
+                if(/*!loginRepository.existsById(login)*/true) {
+                    loginRepository.save(new Login(login, password));
+                    long res = loginRepository.getIdByEmail(login);
+                    int s = 0;
+                    personRepository.save(new Person(null, null, 0, null, res));
                     return true;
                 }
                 return false;
@@ -221,13 +233,42 @@ public class DAOConfiguration {
             public Person getPersonByLogin(String login) {
                 return personRepository.getPersonByLogin(login);
             }
+
+            @Override
+            public boolean setName(long id, String name) {
+                personRepository.setName(id, name);
+                return true;
+            }
+
+            @Override
+            public boolean setSurname(long id, String surname) {
+                personRepository.setSurname(id, surname);
+                return true;
+            }
+
+            @Override
+            public boolean setIcon(long id, long icon) {
+                personRepository.setIcon(id, icon);
+                return true;
+            }
+
+            @Override
+            public boolean setPhone(long id, String phone) {
+                personRepository.setPhone(id, phone);
+                return true;
+            }
+
+            @Override
+            public String getIcon(long id) {
+                return Long.toString(personRepository.getIcon(id));
+            }
         };
     }
 
     @Bean
     DAOTeacher daoTeacher() {
         return new DAOTeacher() {
-            @Autowired
+            //@Autowired
             TeacherRepository teacherRepository;
 
             @Override

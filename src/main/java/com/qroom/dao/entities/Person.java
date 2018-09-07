@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long person_id;
+    private Long person_id;
     @Column
     private String name;
     @Column
@@ -16,11 +16,11 @@ public class Person {
     @Column
     private String phone;
     @Column
-    private long login_id;
+    private Long login_id;
 
     public Person() { }
 
-    public Person(String name, String surname, Long icon_id, String phone, long login_id) {
+    public Person(String name, String surname, long icon_id, String phone, long login_id) {
         this.name = name;
         this.surname = surname;
         this.icon_id = icon_id;
@@ -29,7 +29,7 @@ public class Person {
     }
 
 
-    public long getPerson_id() {
+    public Long getPerson_id() {
         return person_id;
     }
 
@@ -69,7 +69,7 @@ public class Person {
         this.phone = phone;
     }
 
-    public long getLogin_id() {
+    public Long getLogin_id() {
         return login_id;
     }
 

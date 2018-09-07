@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Login {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long login_id;
+    private Long login_id;
     @Column
     private String email;
     @Column
@@ -15,12 +15,11 @@ public class Login {
     public Login() { }
 
     public Login(String email, String password) {
-        this.login_id = login_id;
         this.email = email;
         this.password = password;
     }
 
-    public long getLogin_id() {
+    public Long getLogin_id() {
         return login_id;
     }
 

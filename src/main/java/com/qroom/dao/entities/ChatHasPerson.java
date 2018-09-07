@@ -3,7 +3,7 @@ package com.qroom.dao.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class ChatHasPerson {
     @Column
     private long chat_id;
