@@ -12,9 +12,7 @@ public class Person {
     @Column
     private String surname;
     @Column
-    private String icon;
-    @Column
-    private long icon_id;
+    private Long icon_id;
     @Column
     private String phone;
     @Column
@@ -22,14 +20,14 @@ public class Person {
 
     public Person() { }
 
-    public Person(String name, String surname, String icon, long icon_id, String phone, long login_id) {
+    public Person(String name, String surname, Long icon_id, String phone, long login_id) {
         this.name = name;
         this.surname = surname;
-        this.icon = icon;
         this.icon_id = icon_id;
         this.phone = phone;
         this.login_id = login_id;
     }
+
 
     public long getPerson_id() {
         return person_id;
@@ -55,15 +53,7 @@ public class Person {
         this.surname = surname;
     }
 
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public long getIcon_id() {
+    public Long getIcon_id() {
         return icon_id;
     }
 
