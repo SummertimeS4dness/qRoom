@@ -30,10 +30,9 @@ public class MessageController {
     }
 
     @RequestMapping("/sendMessage")
-    public Answer sendMessage(@RequestParam ("text") String text, @RequestParam ("file") String file,
-                              @RequestParam ("number") long number, @RequestParam ("course") long course,
-                              @RequestParam ("person") long person, HttpSession session){
-        Message message = new Message(text, file, number, course, person);
+    public Answer sendMessage(@RequestParam ("text") String text, @RequestParam ("file") Long file,
+                              @RequestParam ("sender_id") long sender_id, @RequestParam ("chat_id") long chat_id, HttpSession session){
+        Message message = new Message(chat_id, text, sender_id, file);
         final String command = "/sendMessage";
         ActionServer actionServer = () -> new SuccessAnswer<>(command, null, daoMessage.sendMessage(message));
         return new AuthorizationTemplate(actionServer, session, command, daoLogin).answer();
@@ -42,7 +41,7 @@ public class MessageController {
     @RequestMapping("/getMessage")
     public Answer getMessage(@RequestParam ("id") long id, HttpSession session){
         final String command = "/getMessage";
-        ActionServer actionServer = () -> new SuccessAnswer<>(command, null, daoMessage.getMessage(id));
+        ActionServer actionServer = () -> new SuccessAnswer<>(command, null, daoMessage.getMessageById(id));
         return new AuthorizationTemplate(actionServer, session, command, daoLogin).answer();
     }
 }
