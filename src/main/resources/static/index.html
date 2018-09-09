@@ -29,5 +29,19 @@
         <input type="submit" value="Upload"> Press here to upload the file!
     </form>
 </div>
+<p>/testCon - проверяет подключение</p>
+<p>/register?login=2&password=2&name=2&surname=2&email=2&phone=2 - регистрация
+<p>/login1?login=2&password=2&name=2 - логин
+<p>Формат ответа на логин/регистрацию:</p>
+<p>Успешный:
+    {"status":true,"command":"register","info":null,"obj":{"login":"2","password":"2"}}
+    {"status":true,"command":"login","info":null,"obj":{"login":"2","password":"2"}}</p>
+<p>Не успешный:
+    {"status":false,"command":"register","info":null}
+    {"status":false,"command":"login","info":null}</p>
+<p>/test - проверка на наличие login и password в сессии
+    Ответ - True/False</p>
+<p>/testDB - содержимое таблицы Person</p>
+<p>/login - Google авторизация(лучше тестить через режим инкогнито)</p>
 </body>
 </html>
