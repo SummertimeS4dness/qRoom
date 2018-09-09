@@ -29,19 +29,19 @@
         <input type="submit" value="Upload"> Press here to upload the file!
     </form>
 </div>
-<p>/testCon - проверяет подключение</p>
-<p>/register?login=2&password=2 - регистрация
-<p>/login1?login=2&password=2&name=2 - логин
-<p>Формат ответа на логин/регистрацию:</p>
+<p>/testCon - проверяет подключение</p><br>
+<p>/register?login=2&password=2 - регистрация</p><br>
+<p>/login1?login=2&password=2&name=2 - логин</p><br>
+<p>Формат ответа на логин/регистрацию:</p><br>
 <p>Успешный:
-    {"status":true,"command":"register","info":null,"obj":{"login":"2","password":"2"}}
-    {"status":true,"command":"login","info":null,"obj":{"login":"2","password":"2"}}</p>
+    {"status":true,"command":"register","info":null,"obj":{"login":"2","password":"2"}}<br>
+    {"status":true,"command":"login","info":null,"obj":{"login":"2","password":"2"}}</p><br>
 <p>Не успешный:
-    {"status":false,"command":"register","info":null}
-    {"status":false,"command":"login","info":null}</p>
-<p>/test - проверка на наличие login и password в сессии
-    Ответ - True/False</p>
-<p>/testDB - содержимое таблицы Person</p>
-<p>/login - Google авторизация(лучше тестить через режим инкогнито)</p>
+    {"status":false,"command":"register","info":null}<br>
+    {"status":false,"command":"login","info":null}</p><br>
+<p>/test - проверка на наличие login и password в сессии<br>
+    Ответ - True/False</p><br>
+<p>/testDB - содержимое таблицы Person</p><br>
+<p>/login - Google авторизация(лучше тестить через режим инкогнито)</p><br>
 </body>
 </html>
