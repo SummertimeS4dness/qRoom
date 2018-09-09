@@ -5,6 +5,7 @@ import com.qroom.controllers.answers.ErrorAnswer;
 import com.qroom.controllers.answers.SuccessAnswer;
 import com.qroom.controllers.answers.templates.AuthorizationTemplate;
 import com.qroom.dao.DAOLogin;
+import com.qroom.dao.DAOPerson;
 import com.qroom.dao.entities.Login;
 import com.qroom.dao.entities.Person;
 import com.qroom.dao.entities.User;
@@ -42,9 +43,9 @@ public class AuthorisationController {
 
     @RequestMapping(value = "/register")
     public Answer register(@RequestParam("login") String login, @RequestParam("password") String password,
-                           @RequestParam("name") String name, @RequestParam("surname") String surname,
-                           @RequestParam("email") String email, @RequestParam("phone") String phone, HttpSession session) {
-        boolean check = daoLogin.register(login, password, name, surname, email, phone);
+                           /*@RequestParam("name") String name, @RequestParam("surname") String surname,
+                           @RequestParam("email") String email, @RequestParam("phone") String phone, */HttpSession session) {
+        boolean check = daoLogin.register(login, password/*, name, surname, email, phone*/);
         System.out.println("REGISTER: " + login);
         if(check) {
             session.setAttribute("user", new Login(login, password));
@@ -126,5 +127,20 @@ public class AuthorisationController {
     public Map<String, Object> user(Principal principal, OAuth2Authentication auth) {
         //return principal;
         return (Map<String, Object>) auth.getUserAuthentication().getDetails();
+    }
+
+    @Autowired
+    DAOPerson daoPerson;
+
+    @RequestMapping("/testUpdate")
+    public void update(@RequestParam("login") long login, @RequestParam("id") long id) {
+        daoPerson.setIcon(id, login);
+        //return principal;
+    }
+
+    @RequestMapping("/getIcon")
+    public String getIcon(@RequestParam("id") long id) {
+        return daoPerson.getIcon(id);
+        //return principal;
     }
 }
